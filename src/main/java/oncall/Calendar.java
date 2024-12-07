@@ -11,7 +11,7 @@ public class Calendar {
         int monthLength = month.getLength();
         for (int dayNum = 1; dayNum <= monthLength; dayNum++) {
             boolean isHoliday = month.isHoliday(dayNum);
-            days.add(new Day(dayOfTheWeek, dayNum, isHoliday));
+            days.add(new Day(month, dayOfTheWeek, dayNum, isHoliday));
             dayOfTheWeek = dayOfTheWeek.getNextDay();
         }
     }
@@ -23,5 +23,9 @@ public class Calendar {
             }
         }
         throw new IllegalArgumentException("존재하지 않는 날짜 입니다");
+    }
+
+    public int getLength() {
+        return days.size();
     }
 }

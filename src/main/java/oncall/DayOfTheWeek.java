@@ -39,4 +39,15 @@ public enum DayOfTheWeek {
         }
         return MONDAY;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public boolean isWeekEnd() {
+        if (this.equals(SATURDAY) || this.equals(SUNDAY)) {
+            return true;
+        }
+        return false;
+    }
 }

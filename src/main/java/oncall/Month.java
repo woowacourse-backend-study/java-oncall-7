@@ -6,23 +6,25 @@ import java.util.List;
 
 public enum Month {
 
-    JANUARY(31, 1),
-    FEBRUARY(28),
-    MARCH(31, 1),
-    APRIL(30),
-    MAY(31, 5),
-    JUNE(30, 6),
-    JULY(31),
-    AUGUST(31, 15),
-    SEPTEMBER(30),
-    OCTOBER(31, 3, 9),
-    NOVEMBER(30),
-    DECEMBER(31, 25);
+    JANUARY("1", 31, 1),
+    FEBRUARY("2", 28),
+    MARCH("3", 31, 1),
+    APRIL("4", 30),
+    MAY("5", 31, 5),
+    JUNE("6", 30, 6),
+    JULY("7", 31),
+    AUGUST("8", 31, 15),
+    SEPTEMBER("9", 30),
+    OCTOBER("10", 31, 3, 9),
+    NOVEMBER("11", 30),
+    DECEMBER("12", 31, 25);
 
+    private String monthName;
     private int length;
     private List<Integer> holidayNums = new ArrayList<>();
 
-    Month(int length, Integer... holidayNums) {
+    Month(String monthName, int length, Integer... holidayNums) {
+        this.monthName = monthName;
         this.length = length;
         this.holidayNums.addAll(Arrays.asList(holidayNums));
     }
@@ -38,5 +40,10 @@ public enum Month {
             }
         }
         return false;
+    }
+
+    @Override
+    public String toString() {
+        return monthName + "월";
     }
 }

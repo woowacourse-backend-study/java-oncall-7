@@ -42,7 +42,7 @@ public class RosterTest {
         Assertions.assertThat(rosterMachine.getCurrentMember(false).equals(name3)).isEqualTo(true);
     }
 
-    private Roster getWeekDayRoster() {
+    public static Roster getWeekDayRoster() {
         String name1 = "사원1";
         Member member1 = new Member(name1);
         String name2 = "사원2";
@@ -57,7 +57,7 @@ public class RosterTest {
         return new Roster(memberFactory.getMembers());
     }
 
-    private Roster getWeekEndRoster() {
+    public static Roster getWeekEndRoster() {
         String name1 = "사원1";
         Member member1 = new Member(name1);
         String name2 = "사원2";

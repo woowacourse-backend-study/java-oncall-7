@@ -15,8 +15,8 @@ public class CalendarTest {
         Day day2 = martchCalendar.getDay(3);
 
         //then
-        Assertions.assertThat(day1).isEqualTo(new Day(DayOfTheWeek.MONDAY, 1, true));
-        Assertions.assertThat(day2).isEqualTo(new Day(DayOfTheWeek.WEDNESDAY, 3, false));
+        Assertions.assertThat(day1).isEqualTo(new Day(Month.MARCH, DayOfTheWeek.MONDAY, 1, true));
+        Assertions.assertThat(day2).isEqualTo(new Day(Month.MARCH, DayOfTheWeek.WEDNESDAY, 3, false));
     }
 
     @Test
@@ -28,6 +28,19 @@ public class CalendarTest {
         Day day = martchCalendar.getDay(5);
 
         //then
-        Assertions.assertThat(day).isEqualTo(new Day(DayOfTheWeek.FRIDAY, 5, true));
+        Assertions.assertThat(day).isEqualTo(new Day(Month.MAY, DayOfTheWeek.FRIDAY, 5, true));
+    }
+
+    @Test
+    void 공휴일과_주말을_판단_할_수_있다() {
+        //given
+        Calendar martchCalendar = new Calendar(DayOfTheWeek.SATURDAY, Month.MAY);
+
+        //when
+        Day day = martchCalendar.getDay(1);
+
+        //then
+        Assertions.assertThat(day.isHoliday()).isEqualTo(false);
+        Assertions.assertThat(day.isHolidayOrWeekEnd()).isEqualTo(true);
     }
 }
