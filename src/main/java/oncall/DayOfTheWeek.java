@@ -50,4 +50,13 @@ public enum DayOfTheWeek {
         }
         return false;
     }
+
+    public static DayOfTheWeek getDayOfTheWeek(String name) throws IllegalArgumentException {
+        for (DayOfTheWeek dayOfTheWeek : values()) {
+            if (dayOfTheWeek.getName().equals(name)) {
+                return dayOfTheWeek;
+            }
+        }
+        throw new IllegalArgumentException("존재하지 않는 요일입니다");
+    }
 }

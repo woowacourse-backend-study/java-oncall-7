@@ -42,6 +42,15 @@ public enum Month {
         return false;
     }
 
+    public static Month getMonth(String name) throws IllegalArgumentException {
+        for (Month month : values()) {
+            if (month.monthName.equals(name)) {
+                return month;
+            }
+        }
+        throw new IllegalArgumentException("존재하지 않는 달입니다.");
+    }
+
     @Override
     public String toString() {
         return monthName + "월";
