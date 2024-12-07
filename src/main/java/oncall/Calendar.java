@@ -12,6 +12,7 @@ public class Calendar {
         for (int dayNum = 1; dayNum <= monthLength; dayNum++) {
             boolean isHoliday = month.isHoliday(dayNum);
             days.add(new Day(dayOfTheWeek, dayNum, isHoliday));
+            dayOfTheWeek = dayOfTheWeek.getNextDay();
         }
     }
 

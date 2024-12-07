@@ -17,4 +17,26 @@ public enum DayOfTheWeek {
         this.name = name;
         this.isDayOff = isDayOff;
     }
+
+    public DayOfTheWeek getNextDay() {
+        if (this.equals(MONDAY)) {
+            return TUESDAY;
+        }
+        if (this.equals(TUESDAY)) {
+            return WEDNESDAY;
+        }
+        if (this.equals(WEDNESDAY)) {
+            return THURSDAY;
+        }
+        if (this.equals(THURSDAY)) {
+            return FRIDAY;
+        }
+        if (this.equals(FRIDAY)) {
+            return SATURDAY;
+        }
+        if (this.equals(SATURDAY)) {
+            return SUNDAY;
+        }
+        return MONDAY;
+    }
 }
