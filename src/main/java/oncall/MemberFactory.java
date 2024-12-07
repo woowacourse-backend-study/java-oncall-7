@@ -19,7 +19,7 @@ public class MemberFactory {
         }
         members.add(newMember);
     }
-    
+
     public Member getMember(String name) {
         for (Member member : members) {
             if (member.equals(name)) {
@@ -27,5 +27,9 @@ public class MemberFactory {
             }
         }
         throw new IllegalArgumentException("존재하지 않는 근무자 입니다");
+    }
+
+    public List<Member> getMembers() {
+        return members;
     }
 }

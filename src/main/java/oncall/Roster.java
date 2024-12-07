@@ -14,7 +14,9 @@ public class Roster {
     }
 
     private Member getCurrentMember() {
-        return members.getFirst();
+        Member member = members.removeFirst();
+        members.addLast(member);
+        return member;
     }
 
     public Member getCurrentMemberByCriterion(Optional<Member> criterion) {
