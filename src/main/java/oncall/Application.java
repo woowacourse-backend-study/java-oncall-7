@@ -1,7 +1,15 @@
 package oncall;
 
+import oncall.io.InputValidator;
+import oncall.io.InputView;
+import oncall.io.OutputView;
+
 public class Application {
     public static void main(String[] args) {
-        // TODO: 프로그램 구현
+        InputView inputView = new InputView(new InputValidator());
+        OutputView outputView = new OutputView();
+        CompanyProgram companyProgram = new CompanyProgram(inputView, outputView);
+
+        companyProgram.startProgram();
     }
 }
