@@ -29,7 +29,7 @@ public class CompanyProgram {
             DayOfTheWeek dayOfTheWeek = DayOfTheWeek.getDayOfTheWeek(inputs[1]);
             return new Calendar(dayOfTheWeek, month);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            outputView.outputErrorMessage(e);
             return makeCalendar();
         }
     }
@@ -41,7 +41,7 @@ public class CompanyProgram {
             RosterMachine rosterMachine = new RosterMachine(weekDayRoster, weekEndRoster);
             return new Company(rosterMachine, calendar);
         } catch (IllegalArgumentException e) {
-            System.out.println("[ERROR] " + e.getMessage());
+            outputView.outputErrorMessage(e);
             return makeCompany(calendar);
         }
     }
