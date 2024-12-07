@@ -5,8 +5,6 @@ import oncall.DayWorker;
 
 public class OutputView {
     public void outputWorkSchedule(List<DayWorker> workSchedule) {
-        for (DayWorker dayWorker : workSchedule) {
-            System.out.println(dayWorker);
-        }
+        workSchedule.forEach(System.out::println);
     }
 }
