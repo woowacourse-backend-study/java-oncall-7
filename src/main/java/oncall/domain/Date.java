@@ -32,6 +32,6 @@ public enum Date {
         return Arrays.stream(values())
                 .filter(date -> date.month == month)
                 .findAny()
-                .orElseThrow(() -> new CustomException(ExceptionMessage.INVALID_DATE.getMessage()));
+                .orElseThrow(() -> new CustomException(ExceptionMessage.INVALID_INPUT.getMessage()));
     }
 }

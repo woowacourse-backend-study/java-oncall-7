@@ -3,6 +3,7 @@ package oncall.controller;
 import oncall.service.WorkerInitializeService;
 import oncall.view.InputView;
 import oncall.view.OutputView;
+import oncall.view.dto.DateInputResponse;
 import oncall.view.dto.WorkerInputResponse;
 
 import java.util.function.Supplier;
@@ -23,8 +24,13 @@ public class Controller {
     }
 
     public void run() {
-        WorkerInputResponse workerInputResponse = doLoop(this::getWorkerInput);
+        DateInputResponse dateInputResponse = getDateInput();
+        WorkerInputResponse workerInputResponse = getWorkerInput();
         workerInitializeService.init(workerInputResponse);
+    }
+
+    private DateInputResponse getDateInput() {
+        return doLoop(inputView::getDate);
     }
 
     private WorkerInputResponse getWorkerInput() {

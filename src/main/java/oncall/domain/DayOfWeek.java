@@ -29,7 +29,7 @@ public enum DayOfWeek {
         return Arrays.stream(values())
                 .filter(dayOfWeek -> dayOfWeek.name.equals(name))
                 .findAny()
-                .orElseThrow(() -> new CustomException(ExceptionMessage.INVALID_DAY.getMessage()));
+                .orElseThrow(() -> new CustomException(ExceptionMessage.INVALID_INPUT.getMessage()));
     }
 
     public static DayOfWeek getNextDay(DayOfWeek before) {
