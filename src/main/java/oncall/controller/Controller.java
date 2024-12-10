@@ -1,5 +1,6 @@
 package oncall.controller;
 
+import oncall.infrastructure.exception.CustomException;
 import oncall.service.EmergencyWorkerService;
 import oncall.service.WorkerInitializeService;
 import oncall.service.dto.ScheduleResponse;
@@ -30,10 +31,15 @@ public class Controller {
 
     public void run() {
         DateInputResponse dateInputResponse = getDateInput();
-        WorkerInputResponse workerInputResponse = getWorkerInput();
-        workerInitializeService.init(workerInputResponse);
+        doLoop(this::init);
         ScheduleResponse scheduleResponse = emergencyWorkerService.getSchedule(dateInputResponse);
         outputView.printSchedule(scheduleResponse);
+    }
+
+    public WorkerInputResponse init() {
+        WorkerInputResponse workerInputResponse = getWorkerInput();
+        workerInitializeService.init(workerInputResponse);
+        return workerInputResponse;
     }
 
     private DateInputResponse getDateInput() {
@@ -48,7 +54,7 @@ public class Controller {
         while (true) {
             try {
                 return function.get();
-            } catch (IllegalArgumentException e) {
+            } catch (CustomException e) {
                 outputView.printMessage(e.getMessage());
             }
         }
