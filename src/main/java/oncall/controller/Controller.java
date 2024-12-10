@@ -1,6 +1,8 @@
 package oncall.controller;
 
+import oncall.service.EmergencyWorkerService;
 import oncall.service.WorkerInitializeService;
+import oncall.service.dto.ScheduleResponse;
 import oncall.view.InputView;
 import oncall.view.OutputView;
 import oncall.view.dto.DateInputResponse;
@@ -12,21 +14,26 @@ public class Controller {
     private final InputView inputView;
     private final OutputView outputView;
     private final WorkerInitializeService workerInitializeService;
+    private final EmergencyWorkerService emergencyWorkerService;
 
     public Controller(
             InputView inputView,
             OutputView outputView,
-            WorkerInitializeService workerInitializeService
+            WorkerInitializeService workerInitializeService,
+            EmergencyWorkerService emergencyWorkerService
     ) {
         this.inputView = inputView;
         this.outputView = outputView;
         this.workerInitializeService = workerInitializeService;
+        this.emergencyWorkerService = emergencyWorkerService;
     }
 
     public void run() {
         DateInputResponse dateInputResponse = getDateInput();
         WorkerInputResponse workerInputResponse = getWorkerInput();
         workerInitializeService.init(workerInputResponse);
+        ScheduleResponse scheduleResponse = emergencyWorkerService.getSchedule(dateInputResponse);
+        outputView.printSchedule(scheduleResponse);
     }
 
     private DateInputResponse getDateInput() {

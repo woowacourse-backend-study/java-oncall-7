@@ -32,8 +32,8 @@ public enum DayOfWeek {
                 .orElseThrow(() -> new CustomException(ExceptionMessage.INVALID_INPUT.getMessage()));
     }
 
-    public static DayOfWeek getNextDay(DayOfWeek before) {
-        final int nextValue = (before.value + 1) % values().length;
+    public DayOfWeek getNextDay() {
+        final int nextValue = (this.value + 1) % values().length;
         return Arrays.stream(values())
                 .filter(dayOfWeek -> dayOfWeek.value == nextValue)
                 .findFirst()

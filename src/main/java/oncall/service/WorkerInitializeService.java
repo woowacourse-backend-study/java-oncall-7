@@ -9,6 +9,8 @@ import java.util.List;
 
 public class WorkerInitializeService {
     public void init(WorkerInputResponse workerInputs) {
+        WeekDayWorkerRepository.reset();
+        HolidayWorkerRepository.reset();
         List<Worker> weekdayWorkers = workerInputs.weekdayWorkers();
         List<Worker> holidayWorkers = workerInputs.holidayWorkers();
         for (Worker worker : weekdayWorkers) {
