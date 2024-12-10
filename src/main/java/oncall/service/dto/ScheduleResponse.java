@@ -14,9 +14,17 @@ public record ScheduleResponse(
         DayOfWeek dayOfWeek = startDay;
         List<ScheduleOfDay> result = new ArrayList<>();
         for (int currentDate = 1; currentDate <= date.lastDay; currentDate++) {
-            result.add(new ScheduleOfDay(dayOfWeek, Holiday.isExist(month, currentDate), workers.get(currentDate-1)));
+            result.add(new ScheduleOfDay(
+                    dayOfWeek,
+                    isWeekHoliday(dayOfWeek, month, currentDate),
+                    workers.get(currentDate-1))
+            );
             dayOfWeek = dayOfWeek.getNextDay();
         }
         return new ScheduleResponse(month, result);
+    }
+
+    private static boolean isWeekHoliday(DayOfWeek day, int month, int date) {
+        return !day.isHoliday && Holiday.isExist(month, date);
     }
 }
