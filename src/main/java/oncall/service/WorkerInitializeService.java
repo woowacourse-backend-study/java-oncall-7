@@ -22,6 +22,8 @@ public class WorkerInitializeService {
         for (Worker worker : holidayWorkers) {
             HolidayWorkerRepository.add(worker);
         }
+        WeekDayWorkerRepository.resetCursor();
+        HolidayWorkerRepository.resetCursor();
     }
 
     private void validateWorkers(List<Worker> workers) {
