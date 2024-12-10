@@ -12,6 +12,7 @@ public enum ExceptionMessage {
     INVALID_DAY(String.format("요일은 %s 중에서만 입력할 수 있습니다.",
             String.join(", ", Arrays.stream(DayOfWeek.values()).map(DayOfWeek::name).toList()))
     ),
+    INVALID_INPUT("유효하지 않은 입력 값입니다. 다시 입력해 주세요."),
     ;
     private final String message;
 
