@@ -1,11 +1,17 @@
 package oncall.infrastructure.constants;
 
+import oncall.domain.DayOfWeek;
 import oncall.domain.Worker;
+
+import java.util.Arrays;
 
 public enum ExceptionMessage {
     EMPTY_NAME("근무자의 이름은 공백으로 설정할 수 없습니다"),
     EXCEED_NAME_LEN(String.format("근무자의 이름은 최대 %,d 글자까지 설정할 수 있습니다.", Worker.MAX_LEN)),
     INVALID_DATE("날짜는 1월부터 12월까지 존재합니다."),
+    INVALID_DAY(String.format("요일은 %s만 입력할 수 있습니다.",
+            String.join(", ", Arrays.stream(DayOfWeek.values()).map(DayOfWeek::name).toList()))
+    ),
     ;
     private final String message;
 
